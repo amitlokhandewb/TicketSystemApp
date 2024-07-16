@@ -1,8 +1,9 @@
 import React from 'react'
+import GenricTabLayout from '../Components/GenericComponents/GenricTabLayout'
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <GenricTabLayout><div>HomePage</div></GenricTabLayout>
   )
 }
 
