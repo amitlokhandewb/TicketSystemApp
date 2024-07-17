@@ -1,11 +1,16 @@
 import { Container, CssBaseline, Box, Avatar, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import wonderbizlogo from "../../Resources/Assets/logo.jpg";
 
 function GenericFormLayout({ Title, children }: any) {
+  const [path, setpath] = useState("");
+
+  useEffect(() => {
+    setpath(window.location.pathname.substring(0, 11));
+  }, []);
   return (
     <div>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth={path === "/register" ? "sm" : "xs"}>
         <CssBaseline />
         <Box
           sx={{

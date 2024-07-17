@@ -1,8 +1,9 @@
 import React from 'react'
+import GenricTabLayout from '../Components/GenericComponents/GenricTabLayout'
 
 function RaiseTicketPage() {
   return (
-    <div>RaiseTicketPage</div>
+    <GenricTabLayout><div>RaiseTicketPage</div></GenricTabLayout>
   )
 }
 

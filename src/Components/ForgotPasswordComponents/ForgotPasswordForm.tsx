@@ -35,7 +35,7 @@ function ForgotPasswordForm() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Link to="/forgotpassword">Back to Login</Link>
+          <Link to="/login">Back to Login</Link>
         </Grid>
       </Grid>
     </Box>

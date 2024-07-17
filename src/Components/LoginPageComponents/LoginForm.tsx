@@ -59,7 +59,7 @@ function LoginForm() {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Link to="/forgotpassword">Forgot password?</Link>
+          <Link to="/forgot-password">Forgot password?</Link>
         </Grid>
       </Grid>
     </Box>
