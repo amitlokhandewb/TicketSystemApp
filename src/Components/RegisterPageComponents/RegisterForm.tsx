@@ -13,6 +13,7 @@ import {
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RegisterFormData, RegisterFormErrors } from "../../Model/LoginModel";
+import { RegisterAsync } from "../../Services/Services";
 
 interface FormData {
   firstname: string;
@@ -112,6 +113,7 @@ function RegisterForm() {
     e.preventDefault();
     if (validateFields()) {
         setLoading(true);
+        RegisterAsync(formData);
         setTimeout(() => {
           setLoading(false);
           alert("Account Created  successfully!");

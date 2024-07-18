@@ -3,7 +3,7 @@ import GenricTabLayout from '../Components/GenericComponents/GenricTabLayout'
 
 function HomePage() {
   return (
-    <GenricTabLayout><div>HomePage</div></GenricTabLayout>
+    <GenricTabLayout title="Dashboard"><div>HomePage</div></GenricTabLayout>
   )
 }
 

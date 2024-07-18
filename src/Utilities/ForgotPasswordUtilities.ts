@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LoginFieldErrors } from "../Model/LoginModel";
+import { VerifyEmailAsync } from "../Services/Services";
 
 export const ForgotPasswordUtilities = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ export const ForgotPasswordUtilities = () => {
     e.preventDefault();
     if (validateFields()) {
       setLoading(true);
+      VerifyEmailAsync(email);
       setTimeout(() => {
         setLoading(false);
         alert("Form submitted successfully!");

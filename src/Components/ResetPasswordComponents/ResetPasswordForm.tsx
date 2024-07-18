@@ -5,9 +5,11 @@ import {
   ResetPasswordFormData,
 } from "../../Model/LoginModel";
 import { ResetPasswordUtilities } from "../../Utilities/ResetPasswordUtilities";
+import { useParams } from "react-router-dom";
 
 function ResetPasswordForm() {
-   const resetpasswordutility = ResetPasswordUtilities();
+  const { id } = useParams<{ id: string }>();
+   const resetpasswordutility = ResetPasswordUtilities(id || "");
    const {handleSubmit,fieldErrors,formData,handleInputChange,loading} = resetpasswordutility;
 
   return (

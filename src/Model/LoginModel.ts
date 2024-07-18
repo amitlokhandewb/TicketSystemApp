@@ -36,3 +36,14 @@ export interface RegisterFormErrors {
   reportingperson1?: string;
   reportingperson2?: string;
 }
+export interface FieldErrorRaise {
+  title?: string;
+  priority? : string;
+  status?: string
+  description? : string;
+}
+export interface RaiseForm{
+  title: string;
+  priority: number;
+  status: number;
+}

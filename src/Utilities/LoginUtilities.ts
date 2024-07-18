@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { LoginFieldErrors, LoginForm } from "../Model/LoginModel";
+import { LoginAsync } from "../Services/Services";
 
 export const LoginUtilities = () => {
   const [formData, setFormData] = useState<LoginForm>({
@@ -47,6 +48,7 @@ export const LoginUtilities = () => {
     e.preventDefault();
     if (validateFields()) {
       setLoading(true);
+      LoginAsync(formData);
       setTimeout(() => {
         setLoading(false);
         alert("Form submitted successfully!");

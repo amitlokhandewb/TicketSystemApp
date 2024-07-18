@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ResetPasswordFormData, ResetPasswordFieldErrors } from "../Model/LoginModel";
+import { ResetPasswordAsync } from "../Services/Services";
 
-export const ResetPasswordUtilities = () => {
+export const ResetPasswordUtilities = (id : string) => {
     const [formData, setFormData] = useState<ResetPasswordFormData>({
         newPassword: "",
         confirmPassword: "",
@@ -54,6 +55,7 @@ export const ResetPasswordUtilities = () => {
         e.preventDefault();
         if (validateFields()) {
           setLoading(true);
+          ResetPasswordAsync(formData, id)
           setTimeout(() => {
             setLoading(false);
             alert("Password reset successfully!");

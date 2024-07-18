@@ -1,44 +1,45 @@
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { MiniDrawerUtilities } from '../../Utilities/MiniDrawerUtilities';
-import { useState } from 'react';
-import HomeIcon from '@mui/icons-material/Home';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
-import { useNavigate } from 'react-router-dom';
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import CssBaseline from "@mui/material/CssBaseline";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import { MiniDrawerUtilities } from "../../Utilities/MiniDrawerUtilities";
+import { useState } from "react";
+import HomeIcon from "@mui/icons-material/Home";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
+import { useNavigate } from "react-router-dom";
+import { Container } from "@mui/material";
 
 const Navs = [
   {
-    text: 'Home',
+    text: "Home",
     icon: <HomeIcon />,
-    route: '/'
+    route: "/",
   },
   {
-    text: 'Raise Ticket',
+    text: "Raise Ticket",
     icon: <ConfirmationNumberIcon />,
-    route: '/raise-ticket'
+    route: "/raise-ticket",
   },
-]
+];
 
-export default function MiniDrawer({children}: any) {
+export default function MiniDrawer({ children, title }: any) {
   const [open, setOpen] = useState(false);
   const [navitem, setNavItme] = useState(Navs);
   const MiniDrawerUtility = MiniDrawerUtilities();
-  const { AppBar,Drawer, DrawerHeader } = MiniDrawerUtility
+  const { AppBar, Drawer, DrawerHeader } = MiniDrawerUtility;
   const theme = useTheme();
   const navigate = useNavigate();
   const handleDrawerOpen = () => {
@@ -50,9 +51,9 @@ export default function MiniDrawer({children}: any) {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex", backgroundColor: '#EDEEF1' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} color="error">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -61,7 +62,7 @@ export default function MiniDrawer({children}: any) {
             edge="start"
             sx={{
               marginRight: 5,
-              ...(open && { display: 'none' }),
+              ...(open && { display: "none" }),
             }}
           >
             <MenuIcon />
@@ -74,36 +75,60 @@ export default function MiniDrawer({children}: any) {
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
           {navitem.map((text, index) => (
-            <ListItem key={index} disablePadding sx={{ display: 'block' }} onClick={() => navigate(text.route)}>
+            <ListItem
+              key={index}
+              disablePadding
+              sx={{ display: "block" }}
+              onClick={() => navigate(text.route)}
+            >
               <ListItemButton
                 sx={{
                   minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
+                  justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
               >
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
                   }}
                 >
                   {text.icon}
                 </ListItemIcon>
-                <ListItemText primary={text.text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText
+                  primary={text.text}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 5 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          m: 3,
+          mt: 10,
+          borderRadius: 3,
+          height: "82vh",
+          backgroundColor: 'white'
+        }}
+      >
+        <Typography variant="h4">{title}</Typography>
         {children}
       </Box>
     </Box>
